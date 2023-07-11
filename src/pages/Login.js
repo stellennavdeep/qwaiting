@@ -18,7 +18,6 @@ function Login() {
     async function login() {
       console.warn(username, password);
       const getItem = { username, password };
-      debugger;
       try {
         const response = await fetch('https://qwaiting.com/webservices/login_by_staff1', {
           method: 'POST',
@@ -40,7 +39,6 @@ function Login() {
           console.error("Login failed");
         }
       } catch (error) {
-        navigate("/dashboard");
         console.error("An error occurred during login:", error);
       }
     }
