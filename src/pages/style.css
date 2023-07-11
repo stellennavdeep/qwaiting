@@ -1,0 +1,28 @@
+.login_page {
+    background: #5c4ae4;
+    min-height: 100vh;
+    display: flex;
+}
+button.btn.btn-primary {
+    background: #5c4ae4;
+    border-color: #5c4ae4;
+}
+button.btn.btn-primary:hover {
+    background: #4935dd;
+}
+a {
+    color: #5c4ae4 !important;
+}
+a:hover {
+    color: #3727b7 !important;
+}
+
+.login_logo{width: 140px;}
+
+
+/* call_page */
+button.btn_call_next { background: #0f4767; color: #fff; border-radius: 0; border: 0; padding: 30px; width: 100%; }
+button.btn_call_next:hover, button.btn_call_next:focus, button.btn_call_next:active{ background: #06344e !important; color: #fff !important; }
+.bg-darkblue{background: #06344e;}
+.border-left { border-left: 1px solid #576068; }
+.logo img { width: 140px;}
