@@ -9,12 +9,6 @@ const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  useEffect(() => {
-    if (localStorage.getItem('user-info')) {
-      navigate('/dashboard');
-    }
-  }, [navigate]);
-
   const login = async () => {
     try { 
       const response = await fetch('https://dummyjson.com/auth/login', {
@@ -36,7 +30,12 @@ const Login = () => {
       console.error('An error occurred during login:', error);
     }
   };
-       
+  
+  useEffect(() => {
+    if (localStorage.getItem('user-info')) {
+      navigate('/dashboard');
+    }
+  }, [navigate]);    
      
     return (
         <Layout>

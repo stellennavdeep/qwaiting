@@ -9,14 +9,22 @@ import axios from 'axios';
 function Dashboard() {
     const navigate = useNavigate();
     const [user, setUser] = useState({})
-    debugger;
-    useEffect(()=>{
-        if(localStorage.getItem('token') == "" || localStorage.getItem('token') == null){
-            navigate("/");
-        }else {
-            getUser()
+   
+    // useEffect(()=>{
+    //     if(localStorage.getItem('token') == "" || localStorage.getItem('token') == null){
+    //         navigate("/");
+    //     }else {
+    //         getUser()
+    //     }
+    // },[])
+    useEffect(() => {
+        if (localStorage.getItem('token') === '') {
+          navigate('/');
+        } else {
+          getUser();
         }
-    },[])
+      }, []);
+
     const getUser = () => {
         axios.get('/api/user', { headers:{Authorization: 'Bearer ' + localStorage.getItem('token')}})
         .then((r) => {
