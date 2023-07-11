@@ -9,7 +9,7 @@ import axios from 'axios';
 function Dashboard() {
     const navigate = useNavigate();
     const [user, setUser] = useState({})
-
+    debugger;
     useEffect(()=>{
         if(localStorage.getItem('token') == "" || localStorage.getItem('token') == null){
             navigate("/");

@@ -1,48 +1,42 @@
-import React,{ useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Layout from "../components/Layout";
 import './style.css';
 
-  
-function Login() {
-    const navigate = useNavigate();
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-  
-    useEffect(() => {
-      if (localStorage.getItem("user-info")) {
-        navigate("/dashboard");
-      }
-    }, []);
-   
-    async function login() {
-      console.warn(username, password);
-      const getItem = { username, password };
-      try {
-        const response = await fetch('https://qwaiting.com/webservices/login_by_staff1', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(getItem),
-        });
-      //   const response = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-      // .then(response => response.json())
-      // .then(json => console.log(json))
 
-      
-        if (response.ok) {
-          const result = await response.json();
-          localStorage.setItem("user-info", JSON.stringify(result));
-          navigate("/dashboard");
-        } else {
-          console.error("Login failed");
-        }
-      } catch (error) {
-        console.error("An error occurred during login:", error);
-      }
+const Login = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  useEffect(() => {
+    if (localStorage.getItem('user-info')) {
+      navigate('/dashboard');
     }
+  }, [navigate]);
 
+  const login = async () => {
+    try { 
+      const response = await fetch('https://dummyjson.com/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (response.ok) {
+        const result = await response.json();
+        localStorage.setItem('user-info', JSON.stringify(result));
+        navigate('/dashboard');
+      } else {
+        console.error('Login failed');
+      }
+    } catch (error) {
+      console.error('An error occurred during login:', error);
+    }
+  };
+       
      
     return (
         <Layout>
